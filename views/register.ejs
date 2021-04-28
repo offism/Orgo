@@ -1,0 +1,77 @@
+<%- include('parts/header')%>
+       <%- include('parts/navbar')%>
+<% var error%>
+        <!-- Start Page Banner -->
+        <div class="page-banner-area page-banner-area-r item-bg4">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-banner-content">
+                            <h2>Register</h2>
+                            <ul>
+                                <li>
+                                    <a href="/index">Home</a>
+                                </li>
+                                <li>Register</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Banner -->
+
+        <!-- Start Register Area -->
+        <section class="register-area ptb-100">
+            <div class="container">
+                <div class="register-form">
+                    <h2>Register</h2>
+                    <% if(error) {%>
+                    <div class="alert alert-danger text-center">
+                        <%= error%>
+                    </div>
+                    <%}%>
+                    <form action="/registration" method="POST">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text"  class="form-control" placeholder="Username" name="username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Number</label>
+                            <input type="tel" class="form-control" placeholder="Number" name="number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="form-check">
+                             <input class="form-check-input" type="radio" name="gender" value="man" id="gender" required>
+                             <label class="form-check-label" for="gender">
+                               Man
+                             </label>
+                           </div>
+                           <div class="form-check">
+                             <input class="form-check-input" type="radio" name="gender" value="woman" id="gender" checked required>
+                             <label class="form-check-label" for="gender">
+                               Woman
+                             </label>
+                           </div>
+                        </div>
+
+                        <p class="description">The password should be at least eight characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & )</p>
+
+                        <button type="submit" class="default-btn">Register</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- End Register Area -->
+        
+        
+    
+<%- include('parts/footer')%>

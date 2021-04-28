@@ -1,0 +1,129 @@
+<%- include('parts/header')%>
+        
+      <%- include('parts/navbar')%>
+
+
+        <!-- Start Page Banner -->
+        <div class="page-banner-area page-banner-area-apm item-bg4">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-banner-content">
+                            <h2>Adding Production Mood </h2>
+                            <ul>
+                                <li>
+                                    <a href="/index">Home</a>
+                                </li>
+                                <li>Add Product</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Banner -->
+
+       
+        
+        <!-- Start Contact Area -->
+        <section class="contact-area ptb-100">
+            <div class="container">
+                <div class="section-title">
+                    <h2>You can to add new product in here</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="contact-form">
+                    <form action="/addproduct" method="POST">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 mb-3">
+                                <div class="form-floating">
+                                  <select class="form-select" id="floatingSelect" name="productSelect" aria-label="Floating label select example">
+                                   <option value="fruits" selected>Fruit</option>
+                                   <option value="fastFoods">Fast Food</option>
+                                   <option value="vegetables">Vegetable</option>
+                                   <option value="drinkes">Juice or drinkwaters</option>
+                                  </select>
+                                 <label for="floatingSelect">Select type of a product</label>
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label>Product Name</label>
+                                    <input type="text" name="productName" placeholder="limonade" id="msg_subject" class="form-control" required data-error="Please enter your subject">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label>Product Image Source</label>
+                                    <input type="text" name="productImgSrc" placeholder="https://picsum.photos/" id="msg_subject" class="form-control" required data-error="Please enter your subject">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="row d-flex align-items-center justify-content-around">
+                                
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label>Product Cost</label>
+                                    <input type="number" name="productCost" value="25" id="msg_subject" class="form-control" required data-error="Please enter your subject">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-6 col-md-6">
+                              <div class="form-check">
+                                <input class="form-check-input" name="popular" type="checkbox" value="true" id="flexCheckIndeterminate">
+                                <label class="form-check-label text-muted" for="flexCheckIndeterminate">
+                                   This is Popular?
+                                </label>
+                              </div> 
+                            </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <button type="submit" class="default-btn">
+                                    Add
+                                </button>
+
+                                <div id="msgSubmit" class="h3 text-center"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- End Contact Area -->
+
+        <!-- Start Newsletter Area -->
+        <div class="newsletter-area ptb-100">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="newsletter-content">
+                            <h2>Subscribe To Our Newsletter</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form class="newsletter-form">
+                            <input type="email" class="input-newsletter" placeholder="Enter Email Address" name="EMAIL" required autocomplete="off">
+
+                            <button type="submit">Subscribe Now</button>
+                            
+                            <div id="validator-newsletter" class="form-result"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Newsletter Area -->
+        
+      <%- include('parts/footer')%>

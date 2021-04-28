@@ -1,0 +1,758 @@
+<%- include('parts/header')%>
+        
+      <%- include('parts/navbar')%>
+        <!-- Start Main Banner Area -->
+        <div class="main-banner">
+            <div class="main-banner-item">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="container">
+                            <div class="main-banner-content">
+                                <span>Take Natural Taste From Our Shop</span>
+                                <h1>Organic Food Is Good For Health</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                                <div class="banner-btn">
+                                    <a href="shop-1.html" class="default-btn text-decoration-none">Our Shop</a>
+                                    <a href="cart.html" class="optional-btn text-decoration-none">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Banner Area -->
+
+        <!-- Start Top Products Area -->
+        <section class="top-products-area pt-100 pb-70">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Trending Products</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="row">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+
+        <div class="row">
+                    <% for(let product of a){%>
+                      <div class="col-lg-3 col-md-6">
+                        <div class="top-products-item">
+                            <div class="products-image">
+                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+
+                                <ul class="products-action">
+                                    <li>
+                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="sale">
+                                    <span>Sale</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="shop-details.html"><%= product.name%></a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">$<%= product.cost%>.00</span>
+                                    <span class="old-price">$<%= product.cost + 35%>.00</span>
+                                </div>
+                                <ul class="rating">
+                                    <li>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+
+                </div>
+         </div>
+    <div class="carousel-item">
+      <div class="row">
+                    <% for(let product of b){%>
+                      <div class="col-lg-3 col-md-6">
+                        <div class="top-products-item">
+                            <div class="products-image">
+                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+
+                                <ul class="products-action">
+                                    <li>
+                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="sale">
+                                    <span>Sale</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="shop-details.html"><%= product.name%></a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">$<%= product.cost%>.00</span>
+                                    <span class="old-price">$<%= product.cost + 35%>.00</span>
+                                </div>
+                                <ul class="rating">
+                                    <li>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                </div>
+
+    </div>
+    <div class="carousel-item">
+       <div class="row">
+                    <% for(let product of c){%>
+                      <div class="col-lg-3 col-md-6">
+                        <div class="top-products-item">
+                            <div class="products-image">
+                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+
+                                <ul class="products-action">
+                                    <li>
+                                        <a id="addBtn" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="sale">
+                                    <span>Sale</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="shop-details.html"><%= product.name%></a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">$<%= product.cost%>.00</span>
+                                    <span class="old-price">$<%= product.cost + 35%>.00</span>
+                                </div>
+                                <ul class="rating">
+                                    <li>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                
+                </div>
+           </div>
+ 
+    </div>
+  </div>
+  
+</div>
+                </div>
+            </div>
+        </section>
+        <!-- End Top Products Area -->
+
+        <!-- Start Detox Water Area -->
+        <section class="detox-water-area ptb-100">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Collect Detox Water From Organic Shop</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="detox-water-image">
+                    <img src="../public/img/myIMG/homeImg.jpg" alt="image">
+                </div>
+            </div>
+
+            <div class="detox-water-shape">
+                <div class="shape1">
+                    <img src="../public/img/detox-water/detox-water-1.png" alt="image">
+                </div>
+
+                <div class="shape2">
+                    <img src="../public/img/detox-water/detox-water-2.png" alt="image">
+                </div>
+
+                <div class="shape3">
+                    <img src="../public/img/detox-water/detox-water-3.png" alt="image">
+                </div>
+
+                <div class="shape4">
+                    <img src="../public/img/detox-water/detox-water-4.png" alt="image">
+                </div>
+            </div>
+        </section>
+        <!-- End Detox Water Area -->
+        
+        <!-- Start Department Area -->
+        <section class="department-area pt-100 pb-70">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Organic Shop of Department</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-department">
+                            <div class="department-image">
+                                <a href="#">
+                                    <img src="../public/img/myIMG/freshMilk.jpg" alt="image">
+                                </a>
+
+                                <div class="content">
+                                    <h3>
+                                        <a href="#" class="text-decoration-none">Fresh Milk</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-department">
+                            <div class="department-image">
+                                <a href="#" class="text-decoration-none">
+                                    <img src="../public/img/myIMG/beef.jpg" alt="image">
+                                </a>
+
+                                <div class="content">
+                                    <h3>
+                                        <a href="#" class="text-decoration-none">Fresh Beef</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-department">
+                            <div class="department-image">
+                                <a href="#" class="text-decoration-none">
+                                    <img src="../public/img/myIMG/chicken.jpg" alt="image">
+                                </a>
+
+                                <div class="content">
+                                    <h3>
+                                        <a href="#" class="text-decoration-none">Chicken Meat</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-department">
+                            <div class="department-image">
+                                <a href="#" class="text-decoration-none">
+                                    <img src="../public/img/myIMG/fruit.jpg" alt="image">
+                                </a>
+
+                                <div class="content">
+                                    <h3>
+                                        <a href="#" class="text-decoration-none">Fresh Fruits</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-department">
+                            <div class="department-image">
+                                <a href="#" class="text-decoration-none">
+                                    <img src="../public/img/myIMG/fish.jpg" alt="image">
+                                </a>
+
+                                <div class="content">
+                                    <h3>
+                                        <a href="#" class="text-decoration-none">Fresh Fish</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-department">
+                            <div class="department-image">
+                                <a href="#" class="text-decoration-none">
+                                    <img src="../public/img/myIMG/vegeyables.jpg" alt="image">
+                                </a>
+
+                                <div class="content">
+                                    <h3>
+                                        <a href="#" class="text-decoration-none">Vegetables</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Department Area -->
+
+        <!-- Start Why Choose Area -->
+        <section class="why-choose-area pt-100">
+            <div class="container">
+                <div class="why-choose-item">
+                    <div class="content">
+                        <span>Why Choose Us</span>
+                        <h3>We are Ensure of These Types</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                    </div>
+
+                    <div class="inner-content">
+                        <div class="icon">
+                            <i class="flaticon-leaf"></i>
+                        </div>
+                        <h4>Organic</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                    </div>
+
+                    <div class="inner-content">
+                        <div class="icon">
+                            <i class="flaticon-heart"></i>
+                        </div>
+                        <h4>Fast and Easy</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                    </div>
+
+                    <div class="inner-content">
+                        <div class="icon">
+                            <i class="flaticon-plant"></i>
+                        </div>
+                        <h4>High Quality</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Why Choose Area -->
+
+        <!-- Start Featured Products Area -->
+        <section class="featured-products-area pt-100 pb-70">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured  Products</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="row">
+                      <% for(let product of b){%>
+                      <div class="col-lg-3 col-md-6">
+                        <div class="top-products-item">
+                            <div class="products-image">
+                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+
+                                <ul class="products-action">
+                                    <li>
+                                        <a id="addBtn" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="sale">
+                                    <span>New</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="shop-details.html"><%= product.name%></a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">$<%= product.cost%>.00</span>
+                                    <span class="old-price">$<%= product.cost + 35%>.00</span>
+                                </div>
+                                <ul class="rating">
+                                    <li>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                
+                </div>
+            </div>
+        </section>
+        <!-- End Featured Products Area -->
+
+        <!-- Start Testimonial Area -->
+        <section class="testimonial-area ptb-100">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Client’s Feedback</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="testimonial-slider owl-carousel owl-theme">
+                    <div class="testimonial-item">
+                        <div class="info">
+                            <img src="../public/img/myIMG/man.jpg" alt="image">
+                            <h3>Ken Morris</h3>
+                            <span>Organic Farmer</span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste.</p>
+
+                        <div class="icon">
+                            <i class="flaticon-right-quotes-symbol"></i>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <div class="info">
+                            <img src="../public/img/myIMG/woman.jpg" alt="image">
+                            <h3>Johansen Lisa</h3>
+                            <span>Organic Farmer</span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste.</p>
+
+                        <div class="icon">
+                            <i class="flaticon-right-quotes-symbol"></i>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <div class="info">
+                            <img src="../public/img/myIMG/man.jpg" alt="image">
+                            <h3>Lodi Kheda</h3>
+                            <span>Organic Farmer</span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste.</p>
+
+                        <div class="icon">
+                            <i class="flaticon-right-quotes-symbol"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Testimonial Area -->
+
+        <!-- Start Best Sellers Products Area -->
+        <section class="top-products-area pt-100 pb-100">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Best Sellers Products</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="top-products-slider owl-carousel owl-theme">
+                     <% for(let product of a){%>
+                        <div class="top-products-item">
+                            <div class="products-image">
+                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+
+                                <ul class="products-action">
+                                    <li>
+                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="sale">
+                                    <span>New</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="shop-details.html"><%= product.name%></a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">$<%= product.cost%>.00</span>
+                                    <span class="old-price">$<%= product.cost + 35%>.00</span>
+                                </div>
+                                <ul class="rating">
+                                    <li>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </section>
+        <!-- End Best Sellers Products Area -->
+
+        <!-- Start Overview Area -->
+        <section class="overview-area ptb-100">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="overview-content">
+                            <h3>50% Off In This week</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+        
+                            <div class="overview-btn">
+                                <a href="shop-1.html" class="default-btn text-decoration-none">Discover Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="overview-video">
+                            <a href="https://www.youtube.com/watch?v=Jh5oX0VRnzk" class="video-btn popup-youtube">
+                                <i class='bx bxl-youtube'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Overview Area -->
+
+        <!-- Start Most Viewed Products Area -->
+        <section class="featured-products-area bg-fafafa pt-100 pb-100">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Most Viewed Products This Month</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="featured-products-slider owl-carousel owl-theme">
+                    <% for(let product of c){%>
+                        <div class="top-products-item">
+                            <div class="products-image">
+                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+
+                                <ul class="products-action">
+                                    <li>
+                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="sale">
+                                    <span>New</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="shop-details.html"><%= product.name%></a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">$<%= product.cost%>.00</span>
+                                    <span class="old-price">$<%= product.cost + 35%>.00</span>
+                                </div>
+                                <ul class="rating">
+                                    <li>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </section>
+        <!-- End Most Viewed Products Area -->
+
+        <!-- Start Blog Area -->
+        <section class="blog-area pt-100 pb-70">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Latest Blog</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog-item">
+                            <div class="image">
+                                <a href="blog-details.html"><img src="../public/img/myIMG/box1.jpg" alt="image"></a>
+                                
+                                <div class="date">
+                                    <span>20 December 2020</span>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <a href="blog-details.html">What You Should Know About Detox Water</a>
+                                </h3>
+                                <a href="blog-details.html" class="blog-btn">Read More +</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog-item">
+                            <div class="image">
+                                <a href="blog-details.html"><img src="../public/img/myIMG/box2.jpg" alt="image"></a>
+                                
+                                <div class="date">
+                                    <span>24 December 2020</span>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <a href="blog-details.html">Better Hot Drink Elegant You Can Order By Online</a>
+                                </h3>
+                                <a href="blog-details.html" class="blog-btn">Read More +</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
+                        <div class="single-blog-item">
+                            <div class="image">
+                                <a href="blog-details.html"><img src="../public/img/myIMG/box3.jpg" alt="image"></a>
+                                
+                                <div class="date">
+                                    <span>29 December 2020</span>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <a href="blog-details.html">Role of Genetics in Treating Low-grade Glioma</a>
+                                </h3>
+                                <a href="blog-details.html" class="blog-btn">Read More +</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Blog Area -->
+
+        <!-- Start Newsletter Area -->
+        <div class="newsletter-area ptb-100">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="newsletter-content">
+                            <h2>Subscribe To Our Newsletter</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form class="newsletter-form">
+                            <input type="email" class="input-newsletter" placeholder="Enter Email Address" name="EMAIL" required autocomplete="off">
+
+                            <button type="submit">Subscribe Now</button>
+                            
+                            <div id="validator-newsletter" class="form-result"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Newsletter Area -->
+
+        <!-- Start Partner Area -->
+        <div class="partner-area ptb-100">
+            <div class="container">
+                <div class="partner-slider owl-carousel owl-theme">
+                    <div class="partner-item">
+                        <img src="../public/img/myIMG/mainHomeMenu3.jpg" alt="image">
+                    </div>
+
+                    <div class="partner-item">
+                        <img src="../public/img/myIMG/mainHomeMenu4.jpg" alt="image">
+                    </div>
+
+                    <div class="partner-item">
+                        <img src="../public/img/myIMG/mainHomeMenu2.jpg" alt="image">
+                    </div>
+
+                    <div class="partner-item">
+                        <img src="../public/img/myIMG/mainHomeMenu.jpg" alt="image">
+                    </div>
+
+                    <div class="partner-item">
+                        <img src="../public/img/myIMG/mainMenuCart.jpg" alt="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Partner Area -->
+
+      
+<%- include('parts/footer')%>

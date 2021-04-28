@@ -1,0 +1,57 @@
+<%- include('parts/header')%>
+        <%- include('parts/navbar')%>
+        <!-- Start Page Banner -->
+        <div class="page-banner-area page-banner-area-l item-bg4">
+            <div class="d-table"> 
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-banner-content">
+                            <h2>Login</h2>
+                            <ul>
+                                <li>
+                                    <a href="/index">Home</a>
+                                </li>
+                                <li>Login</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Banner -->
+
+        <!-- Start Login Area -->
+        <section class="login-area ptb-100">
+            <div class="container">
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <% if(error) {%>
+                    <div class="alert alert-danger text-center">
+                        <%= error%>
+                    </div>
+                    <%}%>
+                    <form action="/login" method="POST">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password" name="password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-6 col-md-6 col-sm-6 lost-your-password">
+                                <a href="/registration" class="lost-your-password">Lost your password?</a>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="default-btn">Login</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- End Login Area -->
+   
+     <%- include('parts/footer')%>

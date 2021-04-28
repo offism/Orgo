@@ -1,0 +1,106 @@
+<%- include('parts/header')%>
+        
+      <%- include('parts/navbar')%>
+<% var totalCost = 0 %>
+        <!-- Start Page Banner -->
+        <div class="page-banner-area page-banner-area-c item-bg2">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-banner-content">
+                            <h2>Cart</h2>
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li>Cart</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Banner -->
+
+        <!-- Start Cart Area -->
+		<section class="cart-area ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <form>
+                            <div class="cart-table table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Unit Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                <% for(let product of selledProduct){ %>
+                                <% totalCost = totalCost + JSON.parse(product.cost) %>
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#">
+                                                    <img src="<%= product.imgSrc %>" alt="<%= product.name%> image">
+                                                </a>
+                                            </td>
+                                            <td class="product-name">
+                                                <a href="shop-details.html"><%= product.name%></a>
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="unit-amount">$<%= product.cost%>.00</span>
+                                            </td>
+                                            
+                                        </tr>
+                                     <%} %>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart-buttons">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-7 col-sm-7 col-md-7">
+                                        <a href="/index" class="default-btn text-decoration-none">
+                                            Back to Shop
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-5 col-sm-5 col-md-5 text-right">
+                                        <a href="/admin" class="default-btn text-decoration-none">
+                                            Cart Total in <b>Admin panel</b>
+                                        </a>
+                                        <a href="/cart" class="default-btn text-decoration-none">
+                                            Update Cart
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cart-totals">
+                                <h3>Cart Totals</h3>
+                                <ul>
+                                    <li>Subtotal 
+                                        <span>$<%= totalCost %>.00</span>
+                                    </li>
+                                    <li>Shipping (-1%) 
+                                        <span>$<%= totalCost * 0.01 %></span>
+                                    </li>
+                                    <li>Total 
+                                        <span><b>$<%= totalCost * 0.01 + totalCost%></b></span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="default-btn text-decoration-none">
+                                    Proceed to Checkout
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+		<!-- End Cart Area -->
+        
+      
+      
+<%- include('parts/footer')%>
