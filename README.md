@@ -1,2 +1,0 @@
-"# myOrgo" 
-permalink: /index.ejs 
