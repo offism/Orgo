@@ -1,17 +1,36 @@
 const router = require('express').Router()
-const users = require('../data')
-const products = require('../allProduct')
-router.get('/' , (req,res) => {
-	let selledProduct = req.cookies.selledProduction	
-    let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
+const {createProduct} = require('../models/cartModel')
+const productsAll = require('../allProduct') 
+const {findProducts} = require('../models/cartModel')  
+const {findNewProducts} = require('../models/newProductModel')  
+const {findUser} = require('../models/UserModel')  
+
+router.get('/' ,async (req,res) => {
+let products = await findProducts()
+let spanLength = products.length
+ let newProducts = await findNewProducts()
+let spanNewLength = newProducts.length
+   let user = await findUser()
 
 res.render('drinkes',{
 	title:'Orgo - Drinkes',
 	path:'/drinkes',
-	users:users,
-	products:products,
-	spanLength:spanLength
+	products:productsAll,
+    spanLength:spanLength,
+    spanNewLength:spanNewLength,
+    userNumber: user.length
 })
+})
+
+router.post('/' ,async (req,res)=>{
+    let {productID} = req.body
+    let products = require('../allProduct')
+    for (let product of products[3]) {
+    if(product.id == productID){
+    await createProduct( product.name, product.cost, product.src, product.popular)  
+}
+}
+    res.redirect('/drinkes')
 })
 
 module.exports = {

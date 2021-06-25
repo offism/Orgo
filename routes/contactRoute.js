@@ -1,17 +1,22 @@
 const router = require('express').Router()
-const users = require('../data')
 const products = require('../allProduct')
+const {findProducts} = require('../models/cartModel')  
+const {findNewProducts} = require('../models/newProductModel')  
+const {findUser} = require('../models/UserModel')  
 
-router.get('/' , (req,res) => {
-	let selledProduct = req.cookies.selledProduction	
-    let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
+router.get('/' ,async (req,res) => {
+let products = await findProducts()
+let spanLength = products.length
+ let newProducts = await findNewProducts()
+  let spanNewLength = newProducts.length
+   let user = await findUser()
 
 res.render('contact',{
 	title:'Orgo - Contact',
 	path:'/contact',
-	users:users,
-	products:products,
-	spanLength:spanLength
+	spanLength:spanLength,
+	spanNewLength:spanNewLength,
+	userNumber: user.length
 })
 })
 

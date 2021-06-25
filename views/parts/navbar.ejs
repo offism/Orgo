@@ -1,6 +1,8 @@
   <% var users %>
   <% var username %>
   <% var spanLength %>
+  <% var spanNewLength %>
+  <% var userNumber %>
   <!-- Start Preloader Area -->
         <div class="preloader">
             <div class="preloader">
@@ -83,7 +85,7 @@
                                     </a>
                                 </li>
               
-                                  <% if(!(username)) { %>
+                                  <% if(userNumber != 1) { %>
                                 <li class="nav-item">
                                     <a href="/registration" class="nav-link">
                                         Authorization 
@@ -137,7 +139,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a href="/newproducts" class="nav-link <%= path == '/newproducts' ? 'active' : '' %>">
-                                                <strong>New Products</strong>
+                                                <strong>New Products <i class="fas fa-star"></i></strong>
                                             </a>
                                         </li>
 
@@ -148,14 +150,17 @@
                                         <i class="fas fa-phone-volume fa-lg"></i>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/addproduct" class="nav-link <%= path == '/addproduct' ? 'active' : '' %>">
-                                        <i class="fas fa-plus fa-lg"></i>
-                                    </a>
-                                </li>
                             </ul>
 
                             <div class="others-options d-flex align-items-center">
+                                 <div class="option-item">
+                                    <div class="cart-btn">
+                                     <a href="/addproduct" class="text-decoration-none <%= path == '/addproduct' ? 'active' : '' %>">
+                                        <i class="fas fa-plus"></i>
+                                        <span><%= spanNewLength ? spanNewLength : 0 %></span>
+                                     </a>
+                                    </div>
+                                </div>
                                 <div class="option-item">
                                     <div class="languages-list">
                                         <select>
@@ -168,7 +173,7 @@
 
                                 <div class="option-item">
                                     <div class="cart-btn">
-                                        <a href="/cart" class="text-decoration-none">
+                                        <a href="/cart" class="text-decoration-none <%= path == '/cart' ? 'active' : '' %>">
                                             <i class='flaticon-shopping-cart'></i>
                                             <span><%= spanLength ? spanLength : 0 %></span>
                                         </a>

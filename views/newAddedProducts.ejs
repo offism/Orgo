@@ -1,4 +1,5 @@
 <% var path %>
+<% var error %>
 <%- include('parts/header')%>
         
       <%- include('parts/navbar')%>
@@ -47,18 +48,20 @@
                 
                 <div class="row">
 
-                      <% if(!products){ %>
-                      <div class="alert alert-info">No yet New Product here now! </div>
+                      <% if(error){ %>
+                      <div class="alert alert-info"><%= error%></div>
                       <%} else {%>
                       <% for(let product of products){ %>
                     <div class="col-lg-3 col-md-6">
                         <div class="top-products-item">
+                            <form action="POST">
+                                
                             <div class="products-image">
-                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name %> image"></a>
+                                <a href="shop-details.html"><img src="<%= product.imgSrc %>" alt="<%= product.name %> image"></a>
 
                                 <ul class="products-action">
                                     <li>
-                                        <a id="addBtn" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                        <button id="addBtn" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
                                     </li>
                                     <li>
                                         <a href="" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
@@ -71,10 +74,10 @@
                                 </ul>
 
                                 <div class="sale">
-                                    <span>Sale</span>
+                                    <span>New <i class="fas fa-ad"></i></span>
                                 </div>
                             </div>
-
+                                  <input type="hidden" value="<%= product.id %>" name="productID">
                             <div class="products-content">
                                 <h3>
                                     <a href=""><%= product.name %></a>
@@ -85,14 +88,21 @@
                                 </div>
                                 <ul class="rating">
                                     <li>
-                                        <i class='bx bxs-star'></i>
+                                          <% if(product.popular){ %>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
                     <% } %>

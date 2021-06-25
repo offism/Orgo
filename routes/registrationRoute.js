@@ -1,48 +1,62 @@
 const router = require('express').Router()
-const users = require('../data')
+const Joi = require('joi')
 const {generateHash } = require('../modules/crypt')
 const {v4: uuidv4} = require('uuid')
 const {createUser} = require('../models/UserModel')
-router.get('/' ,(req,res)=> {
-  let selledProduct = req.cookies.selledProduction 
-  let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
+const {findProducts} = require('../models/cartModel')    
+const {findNewProducts} = require('../models/newProductModel')    
+const {findUser} = require('../models/UserModel')    
+
+const RegistrationValidation = new Joi.object({
+  number: Joi.number()
+  .min(10000)
+  .max(999999999999)
+  .error(new Error ('Phone number is incorrect'))
+  .required(),
+  username: Joi.string()
+  .alphanum()
+  .min(6)
+  .max(16)
+  .error(new Error ('Username is incorrect'))
+  .required(),
+  password: Joi.string()
+  .min(6)
+  .max(32)
+  .error(new Error ('Password is incorrect'))
+  .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
+  .required(),
+  gender: Joi.string()
+})
+
+router.get('/' ,async (req,res)=> {
+  let products = await findProducts()
+let spanLength = products.length
+ let newProducts = await findNewProducts()
+  let spanNewLength = newProducts.length
+   let user = await findUser()
 
    res.render('register',{
    	title:'Registration',
    	path:'/registration',
-    spanLength:spanLength
+    spanLength:spanLength,
+    spanNewLength:spanNewLength,
+    userNumber: user.length
    })
 })
 
 router.post('/' ,async (req , res) => {
 	try {
-		let {username , number , password , gender} = req.body
-		if(!(username && number && password && gender)) throw `Fields aren't completed`
-        if(findUser(username)) throw `Username  is already taken`
-        username = String(username)
-        username = username.toLowerCase()
-        var a = users ? users.length : 0
-        // await createUser(username , number , password , gender)
-    if(a == 0){
-        users.push({
-            id: uuidv4(),
-        	  username:username,
-        	  number:number,
-        	  password: await generateHash(password),
-        	  gender:gender
-        })
-    } else{ 
-      throw `You have already registered this web site!`
-      res.resdirect('/index')
-    }
-    // console.log(users);
-    res.redirect('/login')
+		    const {username , number , password , gender} = await RegistrationValidation.validateAsync(req.body)
+        if(!(username && password)) throw `Username or Password not found`
+        let passwordGen = await generateHash(password)
+        let user = await createUser(username , number , passwordGen , gender)
+        res.redirect('/login')
 
 	} catch(e) {
 		res.render('register' , {
 			title:'Registration',
 			path:'/registration',
-            error:e + ''
+      error:e + ''
 		})
 	}
 })
@@ -52,6 +66,3 @@ module.exports = {
     router: router
 }
 
-function findUser(username){
-	return users.find(user => user.username == username)
-}

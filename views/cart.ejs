@@ -1,7 +1,9 @@
 <%- include('parts/header')%>
         
       <%- include('parts/navbar')%>
-<% var totalCost = 0 %>
+      <% var totalCost = 0 %>
+      <% //let plusminusINput = document.querySelector('#plusminusINput') %>
+      <% //plusminusINput.match()%>
         <!-- Start Page Banner -->
         <div class="page-banner-area page-banner-area-c item-bg2">
             <div class="d-table">
@@ -35,11 +37,18 @@
                                             <th scope="col">Product</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Unit Price</th>
+                                            <th scope="col">To Order</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                <% //if(text){ %>
+                                <!-- <div class="alert alert-info"><%= //text%></div> -->
+                                <% //} else {%>
+                   
                                 <% for(let product of selledProduct){ %>
                                 <% totalCost = totalCost + JSON.parse(product.cost) %>
+                                        <form method="POST">
+                                            <input type="hidden" name="deleteProduct"  value="<%= product.name %>">
                                         <tr>
                                             <td class="product-thumbnail">
                                                 <a href="#">
@@ -52,9 +61,26 @@
                                             <td class="product-price">
                                                 <span class="unit-amount">$<%= product.cost%>.00</span>
                                             </td>
-                                            
+                                            <td class="product-thumbnail">
+                                                <button type="submit" id="orderBtn">
+                                                    <i class='bx bx-trash'></i>
+                                                </button>
+                                            </td>
+                                            <!--  <td class="product-quantity">
+                                                <div class="input-counter">
+                                                    <span class="minus-btn">
+                                                        <i class='bx bx-minus'></i>
+                                                    </span>
+                                                    <input id="plusminusINput" type="text" value="1">
+                                                    <span class="plus-btn">
+                                                        <i class='bx bx-plus'></i>
+                                                    </span>
+                                                </div>
+                                            </td> -->
                                         </tr>
-                                     <%} %>
+                                        </form>
+                                     <% } %>
+                                     <% //} %>
                                         
                                     </tbody>
                                 </table>
@@ -67,13 +93,12 @@
                                         </a>
                                     </div>
                                     <div class="col-lg-5 col-sm-5 col-md-5 text-right">
-                                        <a href="/admin" class="default-btn text-decoration-none">
-                                            Cart Total in <b>Admin panel</b>
-                                        </a>
-                                        <a href="/cart" class="default-btn text-decoration-none">
-                                            Update Cart
-                                        </a>
-                                    </div>
+                                        <form action="/admin" method="POST">
+                                        <button  class="default-btn text-decoration-none border-0">
+                                            Order All
+                                        </button>
+                                        </form>
+                                      </div>
                                 </div>
                             </div>
 

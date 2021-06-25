@@ -49,12 +49,14 @@
                     <% for(let product of products){ %>
                     <div class="col-lg-3 col-md-6">
                         <div class="top-products-item">
+                            <form method="POST">
+                                
                             <div class="products-image">
                                 <a href="shop-details.html"><img src="<%= product.src%>" alt="<%= product.name %> image"></a>
 
                                 <ul class="products-action">
                                     <li>
-                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                        <button id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
@@ -70,7 +72,7 @@
                                     <span>Sale</span>
                                 </div>
                             </div>
-
+                             <input type="hidden" value="<%= product.id %>" name="productID">
                             <div class="products-content">
                                 <h3>
                                     <a href="shop-details.html"><%= product.name%></a>
@@ -81,14 +83,21 @@
                                 </div>
                                 <ul class="rating">
                                     <li>
-                                        <i class='bx bxs-star'></i>
+                                       <% if(product.popular){ %>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
                     

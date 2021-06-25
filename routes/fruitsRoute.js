@@ -1,6 +1,9 @@
 const router = require('express').Router()
-const users = require('../data')
 const products = require('../allProduct')
+const {createProduct} = require('../models/cartModel')
+const {findProducts} = require('../models/cartModel')  
+const {findUser} = require('../models/UserModel')  
+const {findNewProducts} = require('../models/newProductModel')  
 
 let x = [] 
    for (let product of products[0]) {
@@ -8,17 +11,31 @@ let x = []
         x.push(product) 
 }
 }
-router.get('/' , (req,res) => {
-	let selledProduct = req.cookies.selledProduction	
-    let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
+router.get('/' ,async (req,res) => {
+let products = await findProducts()
+let spanLength = products.length
+ let newProducts = await findNewProducts()
+  let spanNewLength = newProducts.length
+   let user = await findUser()
 
 res.render('fruits',{
 	title:'Orgo - Fruit',
 	path:'/fruits',
-	users:users,
 	products:x,
-	spanLength:spanLength
+  spanLength:spanLength,
+  spanNewLength:spanNewLength,
+  userNumber:user.length
 })
+})
+
+router.post('/' ,async (req,res)=>{
+    let {productID} = req.body
+      for (let product of products[0]) {
+     if(product.id == productID){
+     await createProduct( product.name, product.cost, product.src, product.popular)  
+}
+}
+    res.redirect('/fruits')
 })
 
 module.exports = {

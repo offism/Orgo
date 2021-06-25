@@ -21,14 +21,20 @@ let  UserSchema = new Schema({
 })
 
 async function UserModel () {
-let db =  await client()
-return await db.model('myCollection' , UserSchema)
+    let db =  await client()
+    return await db.model('users' , UserSchema)
 }
 
+async function findUser () {
+	let model = await UserModel()
+    let user = await model.find()
+    return user
+}
 async function createUser(username , number , password , gender){
 	if(!(username && password)){
 		throw ReferenceError (`User not found`)
 	}
+
 
 	let model = await UserModel()
     let data = await model.create({
@@ -38,9 +44,9 @@ async function createUser(username , number , password , gender){
     	gender:gender
     })
     await data.save()
-
+    return data
 }
 
 module.exports = {
-   createUser
+   createUser, findUser
 }

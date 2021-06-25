@@ -1,17 +1,24 @@
 const router = require('express').Router()
-const users = require('../data')
 const { confirmHash} = require('../modules/crypt')
+const {findUser} = require('../models/UserModel')
 const {generateToken } = require('../modules/jwt')
-router.get('/' ,(req,res)=> {
-  let selledProduct = req.cookies.selledProduction  
-  let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
+const {findProducts} = require('../models/cartModel')  
+const {findNewProducts} = require('../models/newProductModel')  
+
+router.get('/' ,async (req,res)=> {
+ let products = await findProducts()
+let spanLength = products.length
+ let newProducts = await findNewProducts()
+  let spanNewLength = newProducts.length
+   let user = await findUser()
 
    res.render('login',{
-   	users:users,
    	title: 'Login',
    	path: '/login',
+   	error: '',
     spanLength:spanLength,
-   	error: ''
+    spanNewLength:spanNewLength,
+    userNumber:user.length
    })
 })
 
@@ -19,17 +26,19 @@ router.post('/' ,async (req , res)=>{
   try {
   	let {username , password} = req.body 
     if(!(username && password)) throw `Username is not defined`
-    let user = findUser(username)
+    let users = await findUser({username})
+    users.forEach( async (user) => {
     if(!user) throw `User not found`
     let isTrue = await confirmHash(password, user.password)
     if(!isTrue)	 throw `Password is incorrect`
       
     let token = await generateToken({id: user.id})
-    res  
+    res
        .cookie('token' , token)
        .redirect('/index')
 
-  	 } catch(e) {res.render('login',{
+    })
+  	} catch(e) {res.render('login',{
    	title: 'Login',
    	path: '/login',
    	error: e + ''
@@ -41,8 +50,4 @@ router.post('/' ,async (req , res)=>{
 module.exports = {
 	path:'/login',
     router: router
-}
-
-function findUser(username){
-	return users.find(user => user.username == username)
 }

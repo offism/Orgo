@@ -1,7 +1,7 @@
 <%- include('parts/header')%>
         
       <%- include('parts/navbar')%>
- 
+ <% var totalCost = 0%>
         <!-- Start Page Banner -->
         <div class="page-banner-area page-banner-area-a">
             <div class="d-table">
@@ -27,15 +27,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 mb-1">
-                        <% for(let user of users ) { %>
+                        <% for(let use of user ) { %>
                         <div class="col p-5 bg-light mb-5 rounded d-flex justify-content-around align-items-center">
                         <div class="col-lg-8 col-md-9">
-                            <h2><%= user.username%></h2>
+                            <h2><%= use.username%></h2>
                             <p>Seller</p>
-                            <p><%= user.number %></p>
+                            <p><%= use.number %></p>
                         </div> 
                         <div class="col-lg-4 col-md-3">
-                            <img src="../public/img/myIMG/<%= user.gender %>.jpg" class="img-fluid rounded-circle">
+                            <img src="../public/img/myIMG/<%= use.gender %>.jpg" class="img-fluid rounded-circle">
                         </div>
                         </div>
                         <% } %>
@@ -49,7 +49,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                <% for(let product of selledProduct){ %>
+                                <% for(let product of findNewProducts){ %>
+
+                                 <% totalCost = totalCost + JSON.parse(product.cost) %>
                                         <tr>
                                             <td class="product-thumbnail">
                                                 <a href="#">
@@ -80,9 +82,24 @@
                                     </div>
                                 </div>
                             </div>
-
-                           
                         </form>
+                         <div class="cart-totals">
+                                <h3>Cart Totals</h3>
+                                <ul>
+                                    <li>Subtotal 
+                                        <span>$<%= totalCost %>.00</span>
+                                    </li>
+                                    <li>Service fee (-1%) 
+                                        <span>$<%= totalCost * 0.01 %></span>
+                                    </li>
+                                    <li>Total 
+                                        <span><b>$<%= totalCost * 0.01 + totalCost%></b></span>
+                                    </li>
+                                </ul>
+                                <a href="/admin" class="default-btn text-decoration-none">
+                                    <i class="fas fa-sync-alt"></i>
+                                </a>
+                            </div>
                     </div>
                 </div>
             </div>

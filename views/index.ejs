@@ -12,8 +12,8 @@
                                 <h1>Organic Food Is Good For Health</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
                                 <div class="banner-btn">
-                                    <a href="shop-1.html" class="default-btn text-decoration-none">Our Shop</a>
-                                    <a href="cart.html" class="optional-btn text-decoration-none">Add to Cart</a>
+                                    <a href="/fruits" class="default-btn text-decoration-none">Our Shop</a>
+                                    <a href="/cart" class="optional-btn text-decoration-none">Add to Cart</a>
                                 </div>
                             </div>
                         </div>
@@ -40,12 +40,14 @@
                     <% for(let product of a){%>
                       <div class="col-lg-3 col-md-6">
                         <div class="top-products-item">
+                            <form method="POST">
+                                
                             <div class="products-image">
                                 <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
 
                                 <ul class="products-action">
                                     <li>
-                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                        <button id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
@@ -61,7 +63,8 @@
                                     <span>Sale</span>
                                 </div>
                             </div>
-
+                                <input type="hidden" value="<%= product.id %>" name="productID">
+                                <input type="hidden" value="<%= product.type %>" name="productType">
                             <div class="products-content">
                                 <h3>
                                     <a href="shop-details.html"><%= product.name%></a>
@@ -72,14 +75,21 @@
                                 </div>
                                 <ul class="rating">
                                     <li>
-                                        <i class='bx bxs-star'></i>
+                                        <% if(product.popular){ %>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
                     <%}%>
@@ -91,12 +101,14 @@
                     <% for(let product of b){%>
                       <div class="col-lg-3 col-md-6">
                         <div class="top-products-item">
+                            <form method="POST">
+                                
                             <div class="products-image">
                                 <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
 
                                 <ul class="products-action">
                                     <li>
-                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                        <button id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
@@ -112,7 +124,8 @@
                                     <span>Sale</span>
                                 </div>
                             </div>
-
+                                <input type="hidden" value="<%= product.id %>" name="productID">
+                                <input type="hidden" value="<%= product.type %>" name="productType">
                             <div class="products-content">
                                 <h3>
                                     <a href="shop-details.html"><%= product.name%></a>
@@ -123,14 +136,21 @@
                                 </div>
                                 <ul class="rating">
                                     <li>
-                                        <i class='bx bxs-star'></i>
+                                       <% if(product.popular){ %>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
                     <%}%>
@@ -142,12 +162,14 @@
                     <% for(let product of c){%>
                       <div class="col-lg-3 col-md-6">
                         <div class="top-products-item">
+                            <form method="POST">
+                                
                             <div class="products-image">
                                 <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
 
                                 <ul class="products-action">
                                     <li>
-                                        <a id="addBtn" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                        <button id="addBtn" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
@@ -163,7 +185,8 @@
                                     <span>Sale</span>
                                 </div>
                             </div>
-
+                               <input type="hidden" value="<%= product.id %>" name="productID">
+                               <input type="hidden" value="<%= product.type %>" name="productType">
                             <div class="products-content">
                                 <h3>
                                     <a href="shop-details.html"><%= product.name%></a>
@@ -174,14 +197,21 @@
                                 </div>
                                 <ul class="rating">
                                     <li>
-                                        <i class='bx bxs-star'></i>
+                                        <% if(product.popular){ %>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
                     <%}%>
@@ -387,15 +417,17 @@
                 </div>
 
                 <div class="row">
-                      <% for(let product of b){%>
+                      <% for(let product of newProducts){%>
                       <div class="col-lg-3 col-md-6">
                         <div class="top-products-item">
+                            <form method="POST">
+                                
                             <div class="products-image">
-                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+                                <a href="shop-details.html"><img src="<%= product.imgSrc %>" alt="<%= product.name%> image"></a>
 
                                 <ul class="products-action">
                                     <li>
-                                        <a id="addBtn" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                        <button id="addBtn" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
@@ -411,7 +443,8 @@
                                     <span>New</span>
                                 </div>
                             </div>
-
+                               <input type="hidden" value="<%= product.id %>" name="productID">
+                               <input type="hidden" value="<%= product.type %>" name="productType">
                             <div class="products-content">
                                 <h3>
                                     <a href="shop-details.html"><%= product.name%></a>
@@ -422,14 +455,21 @@
                                 </div>
                                 <ul class="rating">
                                     <li>
-                                        <i class='bx bxs-star'></i>
+                                        <% if(product.popular){ %>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
                     <%}%>
@@ -502,12 +542,14 @@
                 <div class="top-products-slider owl-carousel owl-theme">
                      <% for(let product of a){%>
                         <div class="top-products-item">
+                            <form method="POST">
+                                
                             <div class="products-image">
                                 <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
 
                                 <ul class="products-action">
                                     <li>
-                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                        <button id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
@@ -520,10 +562,11 @@
                                 </ul>
 
                                 <div class="sale">
-                                    <span>New</span>
+                                    <span>Best</span>
                                 </div>
                             </div>
-
+                                <input type="hidden" value="<%= product.id %>" name="productID">
+                                <input type="hidden" value="<%= product.type %>" name="productType">
                             <div class="products-content">
                                 <h3>
                                     <a href="shop-details.html"><%= product.name%></a>
@@ -534,14 +577,129 @@
                                 </div>
                                 <ul class="rating">
                                     <li>
-                                        <i class='bx bxs-star'></i>
+                                         <% if(product.popular){ %>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
                                     </li>
                                 </ul>
                             </div>
+                            </form>
+                        </div>
+                    <%}%>
+                     <% for(let product of c){%>
+                        <div class="top-products-item">
+                            <form method="POST">
+                                
+                            <div class="products-image">
+                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+
+                                <ul class="products-action">
+                                    <li>
+                                        <button id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="sale">
+                                    <span>Best</span>
+                                </div>
+                            </div>
+                                <input type="hidden" value="<%= product.id %>" name="productID">
+                                <input type="hidden" value="<%= product.type %>" name="productType">
+                            <div class="products-content">
+                                <h3>
+                                    <a href="shop-details.html"><%= product.name%></a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">$<%= product.cost%>.00</span>
+                                    <span class="old-price">$<%= product.cost + 35%>.00</span>
+                                </div>
+                                <ul class="rating">
+                                    <li>
+                                         <% if(product.popular){ %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
+                                    </li>
+                                </ul>
+                            </div>
+                            </form>
+                        </div>
+                    <%}%>
+                     <% for(let product of b){%>
+                        <div class="top-products-item">
+                            <form method="POST">
+                                
+                            <div class="products-image">
+                                <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
+
+                                <ul class="products-action">
+                                    <li>
+                                        <button id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="sale">
+                                    <span>Best</span>
+                                </div>
+                            </div>
+                                <input type="hidden" value="<%= product.id %>" name="productID">
+                                <input type="hidden" value="<%= product.type %>" name="productType">
+                            <div class="products-content">
+                                <h3>
+                                    <a href="shop-details.html"><%= product.name%></a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">$<%= product.cost%>.00</span>
+                                    <span class="old-price">$<%= product.cost + 35%>.00</span>
+                                </div>
+                                <ul class="rating">
+                                    <li>
+                                         <% if(product.popular){ %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
+                                    </li>
+                                </ul>
+                            </div>
+                            </form>
                         </div>
                     <%}%>
                 </div>
@@ -587,12 +745,14 @@
                 <div class="featured-products-slider owl-carousel owl-theme">
                     <% for(let product of c){%>
                         <div class="top-products-item">
+                            <form method="POST">
+                                
                             <div class="products-image">
                                 <a href="shop-details.html"><img src="<%= product.src %>" alt="<%= product.name%> image"></a>
 
                                 <ul class="products-action">
                                     <li>
-                                        <a id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                        <button id="addBtn"  data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></button>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart"></i></a>
@@ -605,10 +765,11 @@
                                 </ul>
 
                                 <div class="sale">
-                                    <span>New</span>
+                                    <span>Most View</span>
                                 </div>
                             </div>
-
+                                <input type="hidden" value="<%= product.id %>" name="productID">
+                                <input type="hidden" value="<%= product.type %>" name="productType">
                             <div class="products-content">
                                 <h3>
                                     <a href="shop-details.html"><%= product.name%></a>
@@ -619,14 +780,21 @@
                                 </div>
                                 <ul class="rating">
                                     <li>
-                                        <i class='bx bxs-star'></i>
+                                        <% if(product.popular){ %>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bx-star'></i>
+                                         <%} else { %>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bx-star'></i>
+                                        <i class='bx bx-star'></i>
+                                         <%}%>
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     <%}%>
                 </div>

@@ -1,38 +1,45 @@
 const router = require('express').Router()
-const users = require('../data')
-const products = require('../allProduct')
+const {findProducts} = require('../models/cartModel')  
+const {findNewProducts} = require('../models/newProductModel')  
+const {createNewProduct} = require('../models/newProductModel')  
+const {findUser} = require('../models/UserModel')  
 
-let newProducts = require('../newProducts')
-router.get('/' , (req,res) => {
-	let selledProduct = req.cookies.selledProduction	
-    let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
+router.get('/' , async (req,res) => {
+	let products = await findProducts()
+  let spanLength = products.length
+  let newProducts = await findNewProducts()
+  let spanNewLength = newProducts.length
+     let user = await findUser()
 
-res.render('addProduct',{
-	title:'Orgo - Production Add Mood',
-	path:'/addproduct',
-	users:users,
-	products:products,
-	spanLength:spanLength
+try {
+       if(user.length == 1){
+         res.render('addProduct',{
+         title:'Orgo - Added Product Mood',
+         path:'/addproduct',
+         user:user,
+         findNewProducts:newProducts,
+         spanLength:spanLength,
+         spanNewLength:spanNewLength,
+         userNumber: user.length
 })
+  }
+   else throw `You haven't yet registered, you must be to register` 
+  } catch(e) {
+    res.render('register',{
+    title:'Registration',
+    path:'/registration',
+    spanLength:spanLength,
+    error: e + ''
+   })
+} 
 })
 
-router.post('/' , (req , res)=>{
-   let {productSelect ,productName, productImgSrc , productCost , popular} = req.body
-   let selledProduct = req.cookies.selledProduction	
-    let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
- 
-   newProducts.push({
-   		id: products[0].length + 1,
-   		name:productName,
-   		type:productSelect,
-   		cost:JSON.parse(productCost),
-   		src:productImgSrc,
-   		popular: popular ? true : false
-   	})
-   newProducts = JSON.stringify(newProducts)
-   res.cookie('newProducts' , newProducts)
-   res.redirect('/newproducts')
+router.post('/' , async (req,res) => {
+  let {productSelect , productName , productImgSrc ,productCost , popular} = req.body
+  await createNewProduct(productName , productSelect , productCost , productImgSrc , popular)
+  res.redirect('/addproduct')
 })
+
 
 module.exports = {
 	path:'/addproduct',

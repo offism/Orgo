@@ -1,32 +1,35 @@
 const router = require('express').Router()
-const users = require('../data')
-const {checkToken } = require('../modules/jwt')
-let userName
-for (let user of users) {
-     userName = user.username
-}
-router.get('/' , (req,res) => {
-	try {
-		
+const {findProducts} = require('../models/cartModel')    
+const {findOrderProducts} = require('../models/orderProductModel')    
+const {findUser} = require('../models/UserModel')    
+const {findNewProducts} = require('../models/newProductModel')    
+const {createOrderProduct} = require('../models/orderProductModel')  
+const {deleteProductOne} = require('../models/cartModel')    
 
-let selledProduct = req.cookies.selledProduction	
-let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
-let token = req.cookies.token
-if(token){
-res.render('admin',{
-    title:'Admin Panel',
-    path:'/admin',
-    username:userName,
-    users:users,
-    spanLength:spanLength,
-    selledProduct: selledProduct ? JSON.parse(selledProduct) : '' 
+
+
+router.get('/' ,async (req,res) => {
+    let products = await findNewProducts()
+    let productsAll = await findProducts()
+    let spanLength = productsAll.length
+    let newProducts = await findOrderProducts()
+    let spanNewLength = products.length
+    let user = await findUser()
+	try {
+       if(user.length == 1){
+         res.render('admin',{
+         title:'Admin Panel',
+         path:'/admin',
+         user:user,
+         findNewProducts:newProducts,
+         spanLength:spanLength,
+         spanNewLength:spanNewLength,
+         userNumber: user.length
 })
 	}
 	 else throw `You haven't yet registered, you must be to register` 
 	} catch(e) {
-    let selledProduct = req.cookies.selledProduction	
-	let spanLength = selledProduct ? (JSON.parse(selledProduct)).length : 0
-	res.render('register',{
+    res.render('register',{
    	title:'Registration',
    	path:'/registration',
     spanLength:spanLength,
@@ -34,6 +37,17 @@ res.render('admin',{
    })
 } 
 })
+
+router.post('/' ,async (req , res)=>{
+   let productsAll = await findProducts()
+   for (let product of productsAll) {
+   await createOrderProduct(product.name , product.cost , product.imgSrc , product.popular)
+   let id = product._id
+   await deleteProductOne({_id:id})
+   }
+   res.redirect('/cart')
+})
+
 
 
 module.exports = {
